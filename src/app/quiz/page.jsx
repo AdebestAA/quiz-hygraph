@@ -143,7 +143,7 @@ console.log(wrongAnswer);
 
 return (
 <article  className={`${index % 2 == 0 ? "bg-[blue]" : "bg-[red]"}`} key={index}  >
-<section ref={index === 0 ? divRef : null} className='min-h-screen flex flex-col justify-center align-center transition-all ease-linear duration-500 '>
+<section ref={index === 0 ? divRef : null} className='min-h-screen flex flex-col justify-center align-center transition-all ease-linear duration-500 bg-[navy] '>
    <div className='flex flex-col lg:mx-64 sm:mx-16 mx-4 justify-center align-center'>
     <div className='flex gap-2 text-[navy] font-semibold'>
       <span>{index + 1}.</span>
@@ -182,7 +182,7 @@ return (
    </div>
     </section>
     {/* feedback */}
-    <section className='min-h-screen flex flex-col justify-center align-center'>
+    <section className='min-h-screen flex flex-col justify-center align-center bg-[white]'>
         <div className='lg:mx-64 sm:mx-16 mx-4'>
         <h1 className='font-bold  text-md md:text-sm xs:text-[red]'>{item.answerStatement}</h1>
         <br />
