@@ -133,14 +133,14 @@ console.log(wrongAnswer);
 
   return (
  
-    <div className='min-h-screen'>
+    <div className='min-h-screen md:text-md xs:text-sm text-xs'>
        {/* question */}
 {questionsFromHygraph.map((item,index)=>{
 
 
 return (
-<article className='' key={index}  >
-<section className='bg-white min-h-screen flex flex-col justify-center align-center transition-all ease-linear duration-500 '>
+<article className={`${index % 2 == 0 ? "bg-[blue]" : "bg-[red]"}`} key={index}  >
+<section className=' min-h-screen flex flex-col justify-center align-center transition-all ease-linear duration-500 '>
    <div className='flex flex-col lg:mx-64 sm:mx-16 mx-4 justify-center align-center'>
     <div className='flex gap-2 text-[navy] font-semibold'>
       <span>{index + 1}.</span>
@@ -179,7 +179,7 @@ return (
    </div>
     </section>
     {/* feedback */}
-    <section className='h-screen flex flex-col justify-center align-center'>
+    <section className='min-h-screen flex flex-col justify-center align-center'>
         <div className='lg:mx-64 sm:mx-16 mx-4'>
         <h1 className='font-bold  text-md md:text-sm xs:text-[red]'>{item.answerStatement}</h1>
         <br />
