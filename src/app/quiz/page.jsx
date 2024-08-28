@@ -1,6 +1,6 @@
 "use client"
 // import ActionBtn from '@/components/ActionBtn'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { GraphQLClient, gql } from 'graphql-request';
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
@@ -38,10 +38,12 @@ const [windowHeight,setWindowHeight] = useState(0)
 const [score,setScore] = useState(0)
 const [questionsAnswered,setQuestionsAnswered] = useState(0)
 const [completed,setCompleted] = useState(false)
+const divRef =useRef("")
 
 useEffect(()=>{
 
 getDataMyData()
+console.log(divRef.current);
 
 },[])
 
@@ -69,9 +71,10 @@ const handleScrollDown = ()=>{
     setCompleted(true)
     // alert("completed")
   }
-    const height = window.innerHeight
+    // const height = window.innerHeight
+    const height = document.documentElement.clientHeight
     if (windowHeight === 0) {
-      setWindowHeight(window.innerHeight)
+      setWindowHeight( document.documentElement.clientHeight)
       return
     }
    setWindowHeight(prev => prev + height)
@@ -79,7 +82,7 @@ const handleScrollDown = ()=>{
 
 
   const handleScrollUp = ()=>{
-        const height = window.innerHeight
+        const height =  document.documentElement.clientHeight
  if (windowHeight === 0) {
       return
     }
@@ -139,8 +142,8 @@ console.log(wrongAnswer);
 
 
 return (
-<article className={`${index % 2 == 0 ? "bg-[blue]" : "bg-[red]"}`} key={index}  >
-<section className=' min-h-screen flex flex-col justify-center align-center transition-all ease-linear duration-500 '>
+<article  className={`${index % 2 == 0 ? "bg-[blue]" : "bg-[red]"}`} key={index}  >
+<section ref={index === 0 ? divRef : null} className='min-h-screen flex flex-col justify-center align-center transition-all ease-linear duration-500 '>
    <div className='flex flex-col lg:mx-64 sm:mx-16 mx-4 justify-center align-center'>
     <div className='flex gap-2 text-[navy] font-semibold'>
       <span>{index + 1}.</span>
