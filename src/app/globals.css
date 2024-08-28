@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+.right{
+    background-color: blue;
+}
+
+.wrong{
+    background-color: red;
+}

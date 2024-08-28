@@ -5,6 +5,7 @@ import { GraphQLClient, gql } from 'graphql-request';
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { FaCheck } from "react-icons/fa6";
+import Completed from '@/components/Completed';
 
 
 const link = "https://eu-west-2.cdn.hygraph.com/content/cm03r14ii05eg07uowf1wpoqj/master"
@@ -29,30 +30,61 @@ query MyQuery {
 }
 
 const Quiz = () => {
-    const [currentQuestion,setCurrentQuestion] = useState(0)
-    const [translateValue,setTranslateValue] = useState(0)
-    const [outerContainerValue,setOuterContainerValue] = useState(0)
-    const [count,setCount] = useState(0)
 const [questionsFromHygraph,setQuestionsFromHygraph] = useState([])
 const [loading,setLoading] = useState(false)
-const [checkAnswer,setCheckAnswer] = useState(false)
-const [wordAnswer,setWordAnswer] = useState(0)
-// const [listOfAnswers,setListOfAnswers] = useState(["player"])
-const [listOfAnswers,setListOfAnswers] = useState(["player"])
+const [listOfAnswers,setListOfAnswers] = useState([])
+const [wrongAnswer,setWrongAnswer] = useState([])
+const [windowHeight,setWindowHeight] = useState(0)
+const [score,setScore] = useState(0)
+const [questionsAnswered,setQuestionsAnswered] = useState(0)
+const [completed,setCompleted] = useState(false)
 
 useEffect(()=>{
 
 getDataMyData()
 
 },[])
+
+
+  useEffect(()=>{
+
+window.scrollTo({top:windowHeight,behavior:"smooth"})
+console.log(windowHeight);
+
+  },[windowHeight])
+
  const getDataMyData = async()=>{
    const getData =  await getIntroductionData()
   //  destructure your data
    const {quizModels} = getData
-    console.log(quizModels);
+    // console.log(quizModels);
  setQuestionsFromHygraph(quizModels)
   }
 
+
+
+const handleScrollDown = ()=>{
+
+  if (questionsAnswered !== 0 && questionsAnswered === questionsFromHygraph.length) {
+    setCompleted(true)
+    // alert("completed")
+  }
+    const height = window.innerHeight
+    if (windowHeight === 0) {
+      setWindowHeight(window.innerHeight)
+      return
+    }
+   setWindowHeight(prev => prev + height)
+  }
+
+
+  const handleScrollUp = ()=>{
+        const height = window.innerHeight
+ if (windowHeight === 0) {
+      return
+    }
+   setWindowHeight(prev => prev - height)
+  }
 
 
     const questionsObjects = [
@@ -86,72 +118,59 @@ getDataMyData()
         },
     ]
 
-    const increaseTranslateValue= ()=>{
-        if (translateValue === -100) {
-             setTranslateValue((prev) => prev + 100)
-        }
-    if (count === 0) {
-    return
-    }
-
-    if (translateValue === -100 ) {
-    setTranslateValue((prev) => prev - 100)
-    return
-    }
-    if (translateValue === 0) {
-        setOuterContainerValue((prev) => prev + 100)
-        setCount((prev)=> prev - 1)
-        return
-    }
-
-    }
-    const decreaseeTranslateValue= ()=>{
-    if (count === questionsFromHygraph.length - 1) {
-    return
-    }
-    if (translateValue === 0) {
-    setTranslateValue((prev) => prev - 100)
-    return
-    }
-    if (translateValue === -100) {
-    setOuterContainerValue((prev) => prev - 100)
-    setTranslateValue(0)
-    setCount((prev)=> prev + 1)
-    return
-    }
-    }
+   
 
     useEffect(()=>{
+console.log(wrongAnswer);
+
+    setTimeout(()=>{
+  if (wrongAnswer.length > 0 || listOfAnswers.length > 0) {
+  handleScrollDown()
+  }
+    },1500)
+    },[wrongAnswer,listOfAnswers])
 
 
-    },[translateValue])
   return (
  
-    <div className=' min-h-screen'>
+    <div className='min-h-screen'>
        {/* question */}
 {questionsFromHygraph.map((item,index)=>{
 
 
 return (
-<article className='overflow-y-hidden h-screen transition-all ease-linear duration-500 ' key={index} style={{transform:`translateY(${outerContainerValue}%)`}} >
-<section className='bg-white min-h-screen flex flex-col justify-center align-center transition-all ease-linear duration-500 ' style={{transform:`translateY(${translateValue}%)`} }>
+<article className='' key={index}  >
+<section className='bg-white min-h-screen flex flex-col justify-center align-center transition-all ease-linear duration-500 '>
    <div className='flex flex-col lg:mx-64 sm:mx-16 mx-4 justify-center align-center'>
-<h1 className='sm:font-bold xxs:font-semibold md:text-md xxs:text-sm  text-md text-[navy]'>{item.question}</h1>
+    <div className='flex gap-2 text-[navy] font-semibold'>
+      <span>{index + 1}.</span>
+<h1 className='sm:font-bold xxs:font-bold md:text-md xxs:text-sm  text-md text-[navy]'>{item.question}</h1>
+    </div>
 <aside>
-    {item.options.map((option,index)=>{
-   
-
-        return <div key={index} className='bg-blue-100 border-[2px] border-blue-800 rounded-sm my-[8px] px-[4px] md:py-[10px] relative cursor-pointer'
-        onClick={()=>{
+    {item.options.map((option,optionIndex)=>{
+        return <div key={optionIndex} className={` ${wrongAnswer.some(wrongArray => wrongArray.trim().toLowerCase() === option?.trim().toLowerCase()) ? "bg-red-100 border-red-800" : "bg-blue-100 border-blue-800"} border-[2px] rounded-sm my-[8px] px-[4px] md:py-[10px] relative cursor-pointer`}
+          onClick={(e)=>{
             if (option.toLowerCase() === item.answer.toLowerCase()) {   
                 const copyListOfAnswer = [...listOfAnswers]
                 const addNewAnswer = [...copyListOfAnswer,option]
                 console.log(addNewAnswer);
                 setListOfAnswers(addNewAnswer)
+                setScore(prev => prev + 1)
             }
+          else if (option.toLowerCase() !== item.answer.toLowerCase()) {
+          // alert("show")
+          const newArray = []
+          newArray.push(option)
+          setWrongAnswer(newArray)
+          }
+        setQuestionsAnswered(prev => prev + 1)
+
         }}
         >
-            <p>{option}</p>
+          <div className='flex gap-2 items-center'>
+            <span className='font-semibold border-2 border-md border-[navy] h-[50%] my-2 px-[4px]'>{optionIndex === 0 ? "A" : optionIndex === 1 ? "B" : optionIndex === 2 ? "C" : "D"}</span>
+            <p>{option.slice(3,option.length)}</p>
+          </div>
          {listOfAnswers.some(eachAns => eachAns.toLowerCase() === option.toLowerCase()) && <span className='absolute top-[30%] right-[3%]'><FaCheck className='text-blue-900'/></span>}
             </div>
         
@@ -160,9 +179,9 @@ return (
    </div>
     </section>
     {/* feedback */}
-    <section className='h-screen flex flex-col justify-center align-center transition-all ease-linear duration-500' style={{transform:`translateY(${translateValue}%)`} }>
+    <section className='h-screen flex flex-col justify-center align-center'>
         <div className='lg:mx-64 sm:mx-16 mx-4'>
-        <p>{item.answerStatement}</p>
+        <h1 className='font-bold  text-md md:text-sm xs:text-[red]'>{item.answerStatement}</h1>
         <br />
         <p>{item.feedback}</p>
         </div>
@@ -171,15 +190,21 @@ return (
 
 )
 })}
+
     <div className='w-full h-[8%] fixed bottom-[2%] left-[0%] flex justify-center gap-2 '> 
       <button
-       onClick={increaseTranslateValue}
+       onClick={handleScrollUp}
       className='py-[0px] sm:px-4 px-8 font-bold bg-green-400 font-bold rounded-md'><IoIosArrowUp className='text-2xl' /> </button>
       <button
-         
-           onClick={decreaseeTranslateValue}
-      className='py-[0px]sm:px-4 px-8 font-bold bg-green-400 font-bold rounded-md '> < IoIosArrowDown className='text-2xl' /></button>
+           onClick={handleScrollDown}
+      className='py-[0px]sm:px-4 px-8 font-bold bg-yellow-400 font-bold rounded-md '> < IoIosArrowDown className='text-2xl' /></button>
     </div>
+    {/* <Completed score={score}/> */}
+
+
+    {completed && <Completed score={
+      score / questionsFromHygraph.length * 100 
+      }/>}
     </div>
   )
 }
