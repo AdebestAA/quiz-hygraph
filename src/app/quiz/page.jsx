@@ -38,12 +38,12 @@ const [windowHeight,setWindowHeight] = useState(0)
 const [score,setScore] = useState(0)
 const [questionsAnswered,setQuestionsAnswered] = useState(0)
 const [completed,setCompleted] = useState(false)
-const divRef =useRef("")
+const eachQuestAndFeedback =useRef("")
 
 useEffect(()=>{
 
 getDataMyData()
-console.log(divRef.current);
+
 
 },[])
 
@@ -66,15 +66,16 @@ console.log(windowHeight);
 
 
 const handleScrollDown = ()=>{
-
+console.log("get it",eachQuestAndFeedback.current.getBoundingClientRect().height /2);
+console.log("window height",document.documentElement.clientHeight);
   if (questionsAnswered !== 0 && questionsAnswered === questionsFromHygraph.length) {
     setCompleted(true)
     // alert("completed")
   }
     // const height = window.innerHeight
-    const height = document.documentElement.clientHeight
+    const height = document.documentElement.clientHeight - 100
     if (windowHeight === 0) {
-      setWindowHeight( document.documentElement.clientHeight)
+      setWindowHeight( document.documentElement.clientHeight - 100)
       return
     }
    setWindowHeight(prev => prev + height)
@@ -124,7 +125,7 @@ const handleScrollDown = ()=>{
    
 
     useEffect(()=>{
-console.log(wrongAnswer);
+// console.log(wrongAnswer);
 
     setTimeout(()=>{
   if (wrongAnswer.length > 0 || listOfAnswers.length > 0) {
@@ -142,8 +143,8 @@ console.log(wrongAnswer);
 
 
 return (
-<article  className={`${index % 2 == 0 ? "bg-[blue]" : "bg-[red]"}`} key={index}  >
-<section ref={index === 0 ? divRef : null} className='min-h-screen flex flex-col justify-center align-center transition-all ease-linear duration-500 bg-[navy] '>
+<article ref={eachQuestAndFeedback} className={`${index % 2 == 0 ? "bg-[blue]" : "bg-[red]"}`} key={index}  >
+<section className='min-h-screen flex flex-col justify-center align-center transition-all ease-linear duration-500 bg-[navy] '>
    <div className='flex flex-col lg:mx-64 sm:mx-16 mx-4 justify-center align-center'>
     <div className='flex gap-2 text-[navy] font-semibold'>
       <span>{index + 1}.</span>
