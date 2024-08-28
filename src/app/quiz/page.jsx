@@ -73,9 +73,9 @@ console.log("window height",document.documentElement.clientHeight);
     // alert("completed")
   }
     // const height = window.innerHeight
-    const height = document.documentElement.clientHeight - 100
+    const height = document.documentElement.clientHeight + 100
     if (windowHeight === 0) {
-      setWindowHeight( document.documentElement.clientHeight - 100)
+      setWindowHeight( document.documentElement.clientHeight + 100)
       return
     }
    setWindowHeight(prev => prev + height)
