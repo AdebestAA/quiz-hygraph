@@ -40,6 +40,7 @@ const [questionsAnswered,setQuestionsAnswered] = useState(0)
 const [completed,setCompleted] = useState(false)
 const eachQuestAndFeedback =useRef([])
 const [divNumber,setDivNumber] = useState(0)
+const [showFeedback,setShowFeedback] = useState(true)
 
 useEffect(()=>{
 
@@ -74,7 +75,13 @@ const handleScrollDown = ()=>{
     // alert("completed")
   // }   
 
- window.scrollTo({top:window.scrollY + eachQuestAndFeedback.current[2].getBoundingClientRect().height / 2,behavior:"smooth"})
+
+  if (showFeedback) {
+     window.scrollTo({top:window.scrollY + eachQuestAndFeedback.current[2].getBoundingClientRect().height / 2,behavior:"smooth"})
+setShowFeedback(false)
+return
+  }
+
     
 
   // if (divNumber % 2 !== 1 ) {
@@ -84,14 +91,14 @@ const handleScrollDown = ()=>{
   //   return
   // }
 
-  //     if (divNumber < eachQuestAndFeedback.current.length - 1) {
-  //     setDivNumber((prev)=> prev + 1);
-  //   } else {
-  //     setDivNumber(0); // Reset to first div if it's the last one
-  //   }
-  //    const nextDiv = eachQuestAndFeedback.current[divNumber + 1] || eachQuestAndFeedback.current[0];
-  //  window.scrollTo({top:nextDiv.getBoundingClientRect().top + window.scrollY,behavior:"smooth"})
-
+      if (divNumber < eachQuestAndFeedback.current.length - 1) {
+      setDivNumber((prev)=> prev + 1);
+    } else {
+      setDivNumber(0); // Reset to first div if it's the last one
+    }
+     const nextDiv = eachQuestAndFeedback.current[divNumber + 1] || eachQuestAndFeedback.current[0];
+   window.scrollTo({top:nextDiv.getBoundingClientRect().top + window.scrollY,behavior:"smooth"})
+setShowFeedback(true)
 
   // Mine
     // const height = window.innerHeight
