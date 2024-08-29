@@ -73,13 +73,27 @@ const handleScrollDown = ()=>{
 //     setCompleted(true)
     // alert("completed")
   // }   
-      if (divNumber < eachQuestAndFeedback.current.length - 1) {
-      setDivNumber((prev)=> prev + 1);
-    } else {
-      setDivNumber(0); // Reset to first div if it's the last one
-    }
-     const nextDiv = eachQuestAndFeedback.current[divNumber + 1] || eachQuestAndFeedback.current[0];
-   window.scrollTo({top:nextDiv.getBoundingClientRect().top + window.scrollY,behavior:"smooth"})
+
+ const nextScroll = divNumber + window.innerHeight;
+
+    window.scrollTo({
+      top: nextScroll,
+      behavior: 'smooth',
+    });
+
+    setDivNumber(nextScroll);
+
+// not mine
+  //     if (divNumber < eachQuestAndFeedback.current.length - 1) {
+  //     setDivNumber((prev)=> prev + 1);
+  //   } else {
+  //     setDivNumber(0); // Reset to first div if it's the last one
+  //   }
+  //    const nextDiv = eachQuestAndFeedback.current[divNumber + 1] || eachQuestAndFeedback.current[0];
+  //  window.scrollTo({top:nextDiv.getBoundingClientRect().top + window.scrollY,behavior:"smooth"})
+
+
+  // Mine
     // const height = window.innerHeight
     // const height = document.documentElement.clientHeight + 80
   //   if (windowHeight === 0) {
