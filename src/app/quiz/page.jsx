@@ -173,8 +173,8 @@ setShowFeedback(true)
 
 
 return (
-<article ref={el => eachQuestAndFeedback.current[index] = el} className={`${index % 2 == 0 ? "bg-[blue]" : "bg-[red]"}`} key={index}  >
-<section className='min-h-screen flex flex-col justify-center align-center transition-all ease-linear duration-500 bg-[navy] '>
+<article ref={el => eachQuestAndFeedback.current[index] = el} className={``} key={index}  >
+<section className='min-h-screen flex flex-col justify-center align-center transition-all ease-linear duration-500'>
    <div className='flex flex-col lg:mx-64 sm:mx-16 mx-4 justify-center align-center'>
     <div className='flex gap-2 text-[navy] font-semibold'>
       <span>{index + 1}.</span>
@@ -213,7 +213,7 @@ return (
    </div>
     </section>
     {/* feedback */}
-    <section className='min-h-screen flex flex-col justify-center align-center bg-[white]'>
+    <section className='min-h-screen flex flex-col justify-center align-center'>
         <div className='lg:mx-64 sm:mx-16 mx-4'>
         <h1 className='font-bold  text-md md:text-sm xs:text-[red]'>{item.answerStatement}</h1>
         <br />
@@ -225,14 +225,14 @@ return (
 )
 })}
 
-    <div className='w-full h-[8%] fixed bottom-[2%] left-[0%] flex justify-center gap-2 '> 
+    {/* <div className='w-full h-[8%] fixed bottom-[2%] left-[0%] flex justify-center gap-2 '> 
       <button
        onClick={handleScrollUp}
       className='py-[0px] sm:px-4 px-8 font-bold bg-green-400 font-bold rounded-md'><IoIosArrowUp className='text-2xl' /> </button>
       <button
            onClick={handleScrollDown}
       className='py-[0px]sm:px-4 px-8 font-bold bg-yellow-400 font-bold rounded-md '> < IoIosArrowDown className='text-2xl' /></button>
-    </div>
+    </div> */}
     {/* <Completed score={score}/> */}
 
 
