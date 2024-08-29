@@ -41,6 +41,7 @@ const [completed,setCompleted] = useState(false)
 const eachQuestAndFeedback =useRef([])
 const [divNumber,setDivNumber] = useState(0)
 const [showFeedback,setShowFeedback] = useState(true)
+const [choosenAnswer,setChoosenAnswer] = useState(false)
 
 useEffect(()=>{
 
@@ -49,8 +50,19 @@ getDataMyData()
 
 },[])
 
+useEffect(()=>{
+
+ 
+
+},[])
+
 
   useEffect(()=>{
+
+if (!choosenAnswer) {
+  document.body.style.overflow = "hidden"
+  return
+}
 
 window.scrollTo({top:windowHeight,behavior:"smooth"})
 console.log(windowHeight);
@@ -70,10 +82,11 @@ console.log(windowHeight);
 const handleScrollDown = ()=>{
 // console.log("get it",eachQuestAndFeedback.current.getBoundingClientRect().height /2);
 // console.log("window height",document.documentElement.clientHeight);
-//   if (questionsAnswered !== 0 && questionsAnswered === questionsFromHygraph.length) {
-//     setCompleted(true)
+  if (questionsAnswered !== 0 && questionsAnswered === questionsFromHygraph.length) {
+    setCompleted(true)
     // alert("completed")
-  // }   
+    return
+  }   
 
 
   if (showFeedback) {
@@ -198,6 +211,7 @@ return (
           setWrongAnswer(newArray)
           }
         setQuestionsAnswered(prev => prev + 1)
+        setChoosenAnswer(true)
 
         }}
         >
