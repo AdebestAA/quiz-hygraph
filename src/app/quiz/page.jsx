@@ -225,14 +225,14 @@ return (
 )
 })}
 
-    {/* <div className='w-full h-[8%] fixed bottom-[2%] left-[0%] flex justify-center gap-2 '> 
-      <button
+   {!showFeedback && <div className='w-full  h-[8%] fixed bottom-[2%] left-[0%] flex justify-center gap-2 '> 
+      {/* <button
        onClick={handleScrollUp}
-      className='py-[0px] sm:px-4 px-8 font-bold bg-green-400 font-bold rounded-md'><IoIosArrowUp className='text-2xl' /> </button>
+      className='py-[0px] sm:px-4 px-8 font-bold bg-green-400 font-bold rounded-md'><IoIosArrowUp className='text-2xl' /> </button> */}
       <button
            onClick={handleScrollDown}
-      className='py-[0px]sm:px-4 px-8 font-bold bg-yellow-400 font-bold rounded-md '> < IoIosArrowDown className='text-2xl' /></button>
-    </div> */}
+      className='sm:px-4 px-4 h-[3rem] text-[white] font-bold text-lg bg-green-800 font-bold rounded-md w-[40%] md:w-[5rem]'> Continue </button>
+    </div>}
     {/* <Completed score={score}/> */}
 
 
