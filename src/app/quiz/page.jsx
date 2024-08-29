@@ -74,9 +74,10 @@ const handleScrollDown = ()=>{
     // alert("completed")
   // }   
 
-  if (divNumber % 2 == 0) {
+  if (divNumber % 2 !== 1 ) {
     console.log(window.scrollY);
-    window.scrollTo({top:window.scrollY + window.innerHeight,behavior:"smooth"})
+    window.scrollTo({top:window.scrollY + eachQuestAndFeedback.current[2].getBoundingClientRect().height / 2,behavior:"smooth"})
+    console.log("lol");
     return
   }
 
