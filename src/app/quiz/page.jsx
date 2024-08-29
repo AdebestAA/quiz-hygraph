@@ -38,7 +38,8 @@ const [windowHeight,setWindowHeight] = useState(0)
 const [score,setScore] = useState(0)
 const [questionsAnswered,setQuestionsAnswered] = useState(0)
 const [completed,setCompleted] = useState(false)
-const eachQuestAndFeedback =useRef("")
+const eachQuestAndFeedback =useRef([])
+const [divNumber,setDivNumber] = useState(0)
 
 useEffect(()=>{
 
@@ -66,23 +67,31 @@ console.log(windowHeight);
 
 
 const handleScrollDown = ()=>{
-console.log("get it",eachQuestAndFeedback.current.getBoundingClientRect().height /2);
-console.log("window height",document.documentElement.clientHeight);
-  if (questionsAnswered !== 0 && questionsAnswered === questionsFromHygraph.length) {
-    setCompleted(true)
+// console.log("get it",eachQuestAndFeedback.current.getBoundingClientRect().height /2);
+// console.log("window height",document.documentElement.clientHeight);
+//   if (questionsAnswered !== 0 && questionsAnswered === questionsFromHygraph.length) {
+//     setCompleted(true)
     // alert("completed")
-  }
-    // const height = window.innerHeight
-    const height = document.documentElement.clientHeight + 80
-    if (windowHeight === 0) {
-      setWindowHeight( document.documentElement.clientHeight + 80)
-      return
+  // }   
+      if (divNumber < eachQuestAndFeedback.current.length - 1) {
+      setDivNumber((prev)=> prev + 1);
+    } else {
+      setDivNumber(0); // Reset to first div if it's the last one
     }
-   setWindowHeight(prev => prev + height)
+     const nextDiv = eachQuestAndFeedback.current[divNumber + 1] || eachQuestAndFeedback.current[0];
+   window.scrollTo({top:nextDiv.getBoundingClientRect().top + window.scrollY,behavior:"smooth"})
+    // const height = window.innerHeight
+    // const height = document.documentElement.clientHeight + 80
+  //   if (windowHeight === 0) {
+  //     setWindowHeight( document.documentElement.clientHeight + 80)
+  //     return
+  //   }
+  //  setWindowHeight(prev => prev + height)
   }
 
 
   const handleScrollUp = ()=>{
+
         const height =  document.documentElement.clientHeight
  if (windowHeight === 0) {
       return
@@ -143,7 +152,7 @@ console.log("window height",document.documentElement.clientHeight);
 
 
 return (
-<article ref={eachQuestAndFeedback} className={`${index % 2 == 0 ? "bg-[blue]" : "bg-[red]"}`} key={index}  >
+<article ref={el => eachQuestAndFeedback.current[index] = el} className={`${index % 2 == 0 ? "bg-[blue]" : "bg-[red]"}`} key={index}  >
 <section className='min-h-screen flex flex-col justify-center align-center transition-all ease-linear duration-500 bg-[navy] '>
    <div className='flex flex-col lg:mx-64 sm:mx-16 mx-4 justify-center align-center'>
     <div className='flex gap-2 text-[navy] font-semibold'>
