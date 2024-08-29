@@ -74,23 +74,19 @@ const handleScrollDown = ()=>{
     // alert("completed")
   // }   
 
- const nextScroll = divNumber + window.innerHeight;
+  if (divNumber % 2 == 0) {
+    console.log(window.scrollY);
+    window.scrollTo({top:window.scrollY + window.innerHeight,behavior:"smooth"})
+    return
+  }
 
-    window.scrollTo({
-      top: nextScroll,
-      behavior: 'smooth',
-    });
-
-    setDivNumber(nextScroll);
-
-// not mine
-  //     if (divNumber < eachQuestAndFeedback.current.length - 1) {
-  //     setDivNumber((prev)=> prev + 1);
-  //   } else {
-  //     setDivNumber(0); // Reset to first div if it's the last one
-  //   }
-  //    const nextDiv = eachQuestAndFeedback.current[divNumber + 1] || eachQuestAndFeedback.current[0];
-  //  window.scrollTo({top:nextDiv.getBoundingClientRect().top + window.scrollY,behavior:"smooth"})
+      if (divNumber < eachQuestAndFeedback.current.length - 1) {
+      setDivNumber((prev)=> prev + 1);
+    } else {
+      setDivNumber(0); // Reset to first div if it's the last one
+    }
+     const nextDiv = eachQuestAndFeedback.current[divNumber + 1] || eachQuestAndFeedback.current[0];
+   window.scrollTo({top:nextDiv.getBoundingClientRect().top + window.scrollY,behavior:"smooth"})
 
 
   // Mine
