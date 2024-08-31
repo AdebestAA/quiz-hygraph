@@ -229,7 +229,7 @@ return (
     {/* feedback */}
     <section className='min-h-screen flex flex-col justify-center align-center'>
         <div className='lg:mx-64 sm:mx-16 mx-4'>
-        <h1 className='font-bold  text-md md:text-sm xs:text-[red]'>{item.answerStatement}</h1>
+        <h1 className='font-bold  text-md md:text-sm xs:text-[navy]'>{item.answerStatement}</h1>
         <br />
         <p>{item.feedback}</p>
         </div>
@@ -245,10 +245,9 @@ return (
       className='py-[0px] sm:px-4 px-8 font-bold bg-green-400 font-bold rounded-md'><IoIosArrowUp className='text-2xl' /> </button> */}
       <button
            onClick={handleScrollDown}
-      className='sm:px-4 px-4 h-[3rem] text-[white] font-bold text-lg bg-green-800 font-bold rounded-md w-[40%] md:w-[5rem]'> Continue </button>
+      className='sm:px-4 px-4 h-[3rem] text-[white] font-bold text-lg bg-green-800 font-bold rounded-md w-[40%] md:w-[5rem] lg:w-[8rem]'> Continue </button>
     </div>}
     {/* <Completed score={score}/> */}
-
 
     {completed && <Completed score={
       score / questionsFromHygraph.length * 100 
