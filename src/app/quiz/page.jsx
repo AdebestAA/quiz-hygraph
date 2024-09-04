@@ -15,7 +15,7 @@ const hygraphClient = new GraphQLClient(hygraphEndpoint)
 const getIntroductionData = async()=>{
   const query = gql `
 query MyQuery {
-  quizModels {
+  quizModels (first: 100) {
     answer
     answerStatement
     id
@@ -73,7 +73,7 @@ console.log(windowHeight);
    const getData =  await getIntroductionData()
   //  destructure your data
    const {quizModels} = getData
-    // console.log(quizModels);
+    console.log(quizModels);
  setQuestionsFromHygraph(quizModels)
   }
 
@@ -216,7 +216,7 @@ return (
         }}
         >
           <div className='flex gap-2 items-center'>
-            <span className='font-semibold border-2 border-md border-[navy] h-[50%] my-2 px-[4px]'>{optionIndex === 0 ? "A" : optionIndex === 1 ? "B" : optionIndex === 2 ? "C" : "D"}</span>
+            <span className='font-semibold border-2 border-md border-[navy] h-[50%] my-2 px-[4px]'>{optionIndex === 0 ? "A" : optionIndex === 1 ? "B" : optionIndex === 2 ? "C" :optionIndex === 3 ? "D" :optionIndex === 4 ? "E" :optionIndex === 5 ? "F" : "G" }</span>
             <p>{option.slice(3,option.length)}</p>
           </div>
          {listOfAnswers.some(eachAns => eachAns.toLowerCase() === option.toLowerCase()) && <span className='absolute top-[30%] right-[3%]'><FaCheck className='text-blue-900'/></span>}
