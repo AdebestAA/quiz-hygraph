@@ -195,7 +195,7 @@ return (
     </div>
 <aside>
     {item.options.map((option,optionIndex)=>{
-        return <div key={optionIndex} className={` ${wrongAnswer.some(wrongArray => wrongArray.trim().toLowerCase() === option?.trim().toLowerCase()) ? "bg-red-100 border-red-800" : "bg-blue-100 border-blue-800"} border-[2px] rounded-sm my-[8px] px-[4px] md:py-[10px] relative cursor-pointer`}
+        return <div key={optionIndex} className={` ${wrongAnswer.some(wrongArray => wrongArray.trim().toLowerCase() === option?.trim().toLowerCase()) ? "bg-red-100 border-red-800" :listOfAnswers.some(wrongArray => wrongArray.trim().toLowerCase() === option?.trim().toLowerCase()) ? "bg-green-200 border-green-800" : "bg-blue-100 border-blue-800"} border-[2px] rounded-sm my-[8px] px-[4px] md:py-[10px] relative cursor-pointer`}
           onClick={(e)=>{
             if (option.toLowerCase() === item.answer.toLowerCase()) {   
                 const copyListOfAnswer = [...listOfAnswers]
