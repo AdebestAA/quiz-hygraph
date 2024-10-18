@@ -24,7 +24,7 @@ const page = async() => {
           // }
           
           const data = await response.json();
-          console.log(data);
+          // console.log(data);
 
   return (
     <ItpWebhooks dataFromTypeForm={data} />
