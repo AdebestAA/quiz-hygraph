@@ -6,6 +6,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { FaCheck } from "react-icons/fa6";
 import Completed from '@/components/Completed';
+import { getForms } from '../lib/data';
 
 
 const link = "https://eu-west-2.cdn.hygraph.com/content/cm03r14ii05eg07uowf1wpoqj/master"
@@ -38,23 +39,18 @@ const [windowHeight,setWindowHeight] = useState(0)
 const [score,setScore] = useState(0)
 const [questionsAnswered,setQuestionsAnswered] = useState(0)
 const [completed,setCompleted] = useState(false)
-const eachQuestAndFeedback =useRef([])
 const [divNumber,setDivNumber] = useState(0)
 const [showFeedback,setShowFeedback] = useState(true)
 const [choosenAnswer,setChoosenAnswer] = useState(false)
+const eachQuestAndFeedback =useRef([])
 
 useEffect(()=>{
 
 getDataMyData()
-
-
-},[])
-
-useEffect(()=>{
-
- 
+console.log(getForms());
 
 },[])
+
 
 
   useEffect(()=>{
@@ -65,26 +61,25 @@ if (!choosenAnswer) {
 }
 
 window.scrollTo({top:windowHeight,behavior:"smooth"})
-console.log(windowHeight);
+
 
   },[windowHeight])
 
  const getDataMyData = async()=>{
    const getData =  await getIntroductionData()
-  //  destructure your data
+
    const {quizModels} = getData
-    console.log(quizModels);
+ 
  setQuestionsFromHygraph(quizModels)
   }
 
 
 
 const handleScrollDown = ()=>{
-// console.log("get it",eachQuestAndFeedback.current.getBoundingClientRect().height /2);
-// console.log("window height",document.documentElement.clientHeight);
+
   if (questionsAnswered !== 0 && questionsAnswered === questionsFromHygraph.length) {
     setCompleted(true)
-    // alert("completed")
+    
     return
   }   
 
@@ -97,12 +92,6 @@ return
 
     
 
-  // if (divNumber % 2 !== 1 ) {
-    
-  //   window.scrollTo({top:window.scrollY + eachQuestAndFeedback.current[2].getBoundingClientRect().height / 2,behavior:"smooth"})
-    
-  //   return
-  // }
 
       if (divNumber < eachQuestAndFeedback.current.length - 1) {
       setDivNumber((prev)=> prev + 1);
@@ -113,14 +102,7 @@ return
    window.scrollTo({top:nextDiv.getBoundingClientRect().top + window.scrollY,behavior:"smooth"})
 setShowFeedback(true)
 
-  // Mine
-    // const height = window.innerHeight
-    // const height = document.documentElement.clientHeight + 80
-  //   if (windowHeight === 0) {
-  //     setWindowHeight( document.documentElement.clientHeight + 80)
-  //     return
-  //   }
-  //  setWindowHeight(prev => prev + height)
+ 
   }
 
 
@@ -168,7 +150,7 @@ setShowFeedback(true)
    
 
     useEffect(()=>{
-// console.log(wrongAnswer);
+
 
     setTimeout(()=>{
   if (wrongAnswer.length > 0 || listOfAnswers.length > 0) {
