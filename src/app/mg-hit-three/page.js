@@ -1,6 +1,6 @@
 import MgHitThree from '@/components/MgHitThree';
 import React from 'react'
-  const apiKey = 'tfp_7jNiNB7pBsroNt9fvjLHSWMLpkYRjABEpfDH888YB2Qp_hkTkjbhU58VN';
+  const apiKey = process.env.TYPEFORM_TOKEN
     const endpoint = `https://api.typeform.com/forms/fFHLU2hC`;
 const page = async() => {
 
