@@ -3,7 +3,7 @@ import PnhPostTest from "@/components/PnhPostTest";
 import SurveyThree from "@/components/SurveyThree";
 
 
-    const apiKey = process.env.TYPEFORM_TOKEN
+    const apiKey = 'tfp_7jNiNB7pBsroNt9fvjLHSWMLpkYRjABEpfDH888YB2Qp_hkTkjbhU58VN';
     const endpoint = `https://api.typeform.com/forms/dGNnJsgE`;
 
 const page = async() => {
