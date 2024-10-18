@@ -266,12 +266,12 @@ if (item.type === "matrix") {
         </aside></p>
     {item.properties.fields.map((inItem,index)=>{
         return (
-            <div className='flex justify-between my-2 bg-[#D7DDE9] px-4 py-4'>
+            <div className='flex justify-between my-2 bg-[#D7DDE9] px-4 py-4' key={index}>
                 <span className=''>{inItem.title}</span>
                 <aside className='w-[60%] flex justify-evenly'>
                     {inItem.properties.choices.map((innerItem,innerIndex)=>{
                         return (
-                            <span className='index' >
+                            <span className='index' key={innerIndex} >
                               
                             <input type="radio" name={innerItem.ref} className='text-[2rem]' style={{transform: "scale(1.5)"}} />
                             </span>

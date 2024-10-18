@@ -541,13 +541,13 @@ const dataToBeSentToHygraph = {
 //   console.log(publishResult);
 };
 
-    useEffect(()=>{
-    //   console.log("lets see");
+//     useEffect(()=>{
+//     //   console.log("lets see");
       
-// console.log(data);
-// console.log(storeData?.fields);
+// // console.log(data);
+// // console.log(storeData?.fields);
 
-    },[data])
+//     },[data])
 
 // useEffect(()=>{
 // createAndPublishData();
@@ -609,15 +609,15 @@ const dataToBeSentToHygraph = {
 // }
 
 
-useEffect(()=>{
-// mutate()
-// return ()=> mutate()
-},[])
+// useEffect(()=>{
+// // mutate()
+// // return ()=> mutate()
+// },[])
 
-useEffect(()=>{
-// console.log(storeData?.welcomeScreens[0]?.properties.description.split("\n\n").join("\n\n"));
+// useEffect(()=>{
+// // console.log(storeData?.welcomeScreens[0]?.properties.description.split("\n\n").join("\n\n"));
 
-},[])
+// },[])
 
 }
 

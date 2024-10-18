@@ -147,7 +147,7 @@ useEffect(()=>{
 {surveyInfos.map((item,index)=>{
 
   return (
-    <section onClick={()=> router.push(item.link)} className="border-navy flex items-center w-[90%] bg-white rounded-lg mx-auto my-4 py-2 border-[1px] border-[gray] shadow-md cursor-pointer hover:shadow-lg">
+    <section key={index} onClick={()=> router.push(item.link)} className="border-navy flex items-center w-[90%] bg-white rounded-lg mx-auto my-4 py-2 border-[1px] border-[gray] shadow-md cursor-pointer hover:shadow-lg">
       <span className="bg-[#4C86CB] w-[40px] h-[40px] rounded-lg ml-2 mr-2" ></span> {item.name}
     </section>
   )
