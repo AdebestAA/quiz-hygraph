@@ -1,5 +1,3 @@
-
-
 "use client"
 import React, { useEffect, useRef, useState } from 'react'
 import { GraphQLClient, gql, } from 'graphql-request';
@@ -19,9 +17,14 @@ const [startQuiz,setStartQuiz] = useState(false)
 
 const eachQuestAndFeedback =useRef([])
 
-const client = new GraphQLClient(endpoint);
+// const client = new GraphQLClient(endpoint);
  
-
+const client = new GraphQLClient(endpoint, {
+  headers: {
+    Authorization: `Bearer ${token}`,
+    'Content-Type': 'application/json',
+  },
+});
  
   const deleteQuestMutation = gql`
  mutation deleteAhusPostTest($id: ID!) {
