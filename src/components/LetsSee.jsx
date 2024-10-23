@@ -1,19 +1,19 @@
-"use client"
-import React, { useEffect } from 'react'
+// "use client"
+// import React, { useEffect } from 'react'
 
-const LetsSee = ({data}) => {
+// const LetsSee = ({data}) => {
   
 
-    useEffect(()=>{
-      console.log("lets see");
+//     useEffect(()=>{
+//       console.log("lets see");
       
-console.log(data);
-    },[data])
-  return (
-    <div>
-      from lets see
-    </div>
-  )
-}
+// console.log(data);
+//     },[data])
+//   return (
+//     <div>
+//       from lets see
+//     </div>
+//   )
+// }
 
-export default LetsSee
+// export default LetsSee
