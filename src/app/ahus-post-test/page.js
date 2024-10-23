@@ -18,9 +18,9 @@ const page = async() => {
         console.log(response);
         
         
-        // if (!response.ok) {
-          //     throw new Error(`Error: ${response.statusText}`);
-          // }
+        if (!response.ok) {
+              throw new Error(`Error: ${response.statusText}`);
+          }
           
           const data = await response.json();
           console.log(data);
