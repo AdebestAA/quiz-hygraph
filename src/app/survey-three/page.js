@@ -2,7 +2,7 @@
 import SurveyThree from "@/components/SurveyThree";
 
 
-    const apiKey = 'tfp_7jNiNB7pBsroNt9fvjLHSWMLpkYRjABEpfDH888YB2Qp_hkTkjbhU58VN';
+    const apiKey = process.env.NEXT_PUBLIC_TYPEFORM_TOKEN;
     const endpoint = `https://api.typeform.com/forms/U5Kt7eg9`;
 
 const page = async() => {
