@@ -1,6 +1,6 @@
 export default async function GET() {
-  const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-  const posts = await response.json();
+  // const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+  // const posts = await response.json();
 
 
     // const apiKey = 'tfp_HCy9DgL8mKzrx1SvWywAj36WC1BFEbDesVBxMddpHKYQ_3mPHrzNJZVgh5L';
@@ -25,6 +25,6 @@ export default async function GET() {
   
 
   // Return the posts data as JSON
-  res.status(200).json(posts);
+  // res.status(200).json(posts);
  
 }
