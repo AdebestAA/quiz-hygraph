@@ -2,7 +2,7 @@
 import SurveyThree from "@/components/SurveyThree";
 
 
-    const apiKey = process.env.NEXT_PUBLIC_TYPEFORM_TOKEN;
+    const apiKey = 'tfp_7jNiNB7pBsroNt9fvjLHSWMLpkYRjABEpfDH888YB2Qp_hkTkjbhU58VN';
     const endpoint = `https://api.typeform.com/forms/U5Kt7eg9`;
 
 const page = async() => {
@@ -17,12 +17,12 @@ const page = async() => {
         console.log(response);
         
         
-        if (!response.ok) {
-              throw new Error(`Error: ${response.statusText}`);
-          }
+        // if (!response.ok) {
+        //       throw new Error(`Error: ${response.statusText}`);
+        //   }
           
           const data = await response.json();
-          console.log(data);
+          // console.log(data); 
 
   return (
     <SurveyThree dataFromTypeForm={data} />

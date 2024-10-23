@@ -1,7 +1,7 @@
 import SurveyOneTwo from "@/components/SurveyOneTwo";
 
 
-    const apiKey = process.env.NEXT_PUBLIC_TYPEFORM_TOKEN;
+    const apiKey = 'tfp_7jNiNB7pBsroNt9fvjLHSWMLpkYRjABEpfDH888YB2Qp_hkTkjbhU58VN';
     const endpoint = `https://api.typeform.com/forms/UPVdh9Zd`;
 
 const page = async() => {
@@ -13,7 +13,7 @@ const page = async() => {
                 'Content-Type': 'application/json'
             }
         });
-        console.log(response);
+        // console.log(response);
         
         
         // if (!response.ok) {

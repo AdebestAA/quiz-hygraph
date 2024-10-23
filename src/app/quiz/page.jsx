@@ -9,8 +9,8 @@ import Completed from '@/components/Completed';
 import { getForms } from '../lib/data';
 
 
-const link = "https://eu-west-2.cdn.hygraph.com/content/cm03r14ii05eg07uowf1wpoqj/master"
-const hygraphEndpoint = "https://eu-west-2.cdn.hygraph.com/content/cm03r14ii05eg07uowf1wpoqj/master"
+// const link = "https://eu-west-2.cdn.hygraph.com/content/cm03r14ii05eg07uowf1wpoqj/master"
+// const hygraphEndpoint = "https://eu-west-2.cdn.hygraph.com/content/cm03r14ii05eg07uowf1wpoqj/master"
 const hygraphClient = new GraphQLClient(hygraphEndpoint)
 
 const getIntroductionData = async()=>{

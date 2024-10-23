@@ -16,7 +16,7 @@ const page = async() => {
                 'Content-Type': 'application/json'
             }
         });
-        console.log(response);
+        // console.log(response);
         
         
         // if (!response.ok) {
