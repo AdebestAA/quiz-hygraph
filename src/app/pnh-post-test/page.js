@@ -1,10 +1,11 @@
 
 import PnhPostTest from "@/components/PnhPostTest";
-import SurveyThree from "@/components/SurveyThree";
 
 
-    const apiKey = 'tfp_7jNiNB7pBsroNt9fvjLHSWMLpkYRjABEpfDH888YB2Qp_hkTkjbhU58VN';
+
+    const apiKey = process.env.NEXT_PUBLIC_TYPEFORM_TOKEN;
     const endpoint = `https://api.typeform.com/forms/dGNnJsgE`;
+     const token = process.env.NEXT_PUBLIC_HYGRAPH_TOKEN;
 
 const page = async() => {
 
@@ -26,7 +27,7 @@ const page = async() => {
           console.log(data);
 
   return (
-    <PnhPostTest dataFromTypeForm={data} />
+    <PnhPostTest dataFromTypeForm={data} token={token} />
   )
 }
 
