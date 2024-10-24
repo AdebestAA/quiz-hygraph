@@ -1,4 +1,4 @@
-import LetsSee from "@/components/LetsSee";
+// import LetsSee from "@/components/LetsSee";
   const apiKey = 'tfp_7jNiNB7pBsroNt9fvjLHSWMLpkYRjABEpfDH888YB2Qp_hkTkjbhU58VN';
     const endpoint = `https://api.typeform.com/forms/a85yckVH`;
 
@@ -20,7 +20,7 @@ const QuizData = async() => {
   
  return <div>
     About
-    <LetsSee data={data}/>
+    {/* <LetsSee data={data}/> */}
  </div>
 }
 
