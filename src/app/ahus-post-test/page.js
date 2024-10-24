@@ -8,25 +8,28 @@ import AhusPostTest from "@/components/AhusPostTest";
 
 const page = async() => {
 
- const response = await fetch(endpoint, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${apiKey}`,
-                'Content-Type': 'application/json'
-            }
-        });
-        console.log(response);
+//  const response = await fetch(endpoint, {
+//             method: 'GET',
+//             headers: {
+//                 'Authorization': `Bearer ${apiKey}`,
+//                 'Content-Type': 'application/json'
+//             }
+//         });
+//         console.log(response);
         
         
-        if (!response.ok) {
-              throw new Error(`Error: ${response.statusText}`);
-          }
+//         if (!response.ok) {
+//               throw new Error(`Error: ${response.statusText}`);
+//           }
           
-          const data = await response.json();
-          console.log(data);
+//           const data = await response.json();
+          // console.log(data);
 
   return (
-    <AhusPostTest dataFromTypeForm={data} />
+    <div>
+      "ahuz"
+    </div>
+    // <AhusPostTest dataFromTypeForm={data} />
   )
 }
 
